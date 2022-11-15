@@ -4,5 +4,5 @@ import { verifyToken } from "../middleware/verifyToken.js";
 const routes = express.Router();
 
 routes.post("/takeAttendance", verifyToken, attendance);
-routes.get("/todayAttendance", verifyToken, selfAttendance);
+routes.get("/selfAttendance", verifyToken, selfAttendance);
 export default routes;
