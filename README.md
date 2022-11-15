@@ -10,7 +10,7 @@
 <li>
 <p> <b>SIGN IN (POST) </b> localhost:5000/api/employee/signin </p>
  </li>
-<li>
+
 <li>
 <p> <b>FORGET PASSWORD (POST) </b> localhost:5000/api/employee/forgetpassword </p>
  </li>
@@ -20,6 +20,7 @@
 <li>
 <p> <b>TAKE ATTENDANCE (POST)</b> localhost:5000/api/employee/takeAttendance </p>
  </li>
+ <li>
 <p> <b>SELF ATTENDANCE LIST (GET)</b> localhost:5000/api/employee/selfAttendance</p>
  </li>
 </ul>
