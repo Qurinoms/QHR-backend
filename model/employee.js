@@ -56,6 +56,10 @@ const employeeSchema = new mongoose.Schema(
       default: false,
     },
     dept_name: String,
+    joined: {
+      type: Date,
+      default: new Date(),
+    },
   },
   {
     timestamps: true,

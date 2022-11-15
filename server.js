@@ -17,10 +17,10 @@ app.use(cookieParser());
 
 // Connect database
 
-const connectDB = async () => {
+const connectDatabase = async (url) => {
   try {
-    await mongoose.connect(process.env.MONGO_URI);
-    console.log("Database connected.....");
+    await mongoose.connect(url);
+    console.log("DataBase connected");
   } catch (error) {
     console.log(error);
   }
@@ -31,9 +31,9 @@ app.use("/api/employee", authRoutes);
 app.use("/api/employee", attendanceRoutes);
 
 const PORT = process.env.PORT || 5000;
-const Start = async () => {
-  connectDB();
-  app.listen(PORT, () => console.log(`server is listening on ${PORT}`));
+const StartServer = () => {
+  connectDatabase(process.env.MONGO_URI);
+  app.listen(PORT, () => console.log(`Server listening on ${PORT}`));
 };
 
-Start();
+StartServer();
