@@ -13,13 +13,11 @@ export const signUp = async (req, res) => {
     const newUser = new User({ ...req.body, password: hashPassword });
 
     await newUser.save();
-    res
-      .status(200)
-      .json({
-        success: true,
-        message:
-          "User has been created successfully LOGIN TO ACCESS YOUR PORTAL ",
-      });
+    res.status(200).json({
+      success: true,
+      message:
+        "User has been created successfully LOGIN TO ACCESS YOUR PORTAL ",
+    });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
@@ -55,7 +53,7 @@ export const signIn = async (req, res) => {
         httpOnly: true,
       })
       .status(200)
-      .json({ success: true, data: others });
+      .json(others);
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
@@ -161,7 +159,7 @@ export const googleAuth = async (req, res) => {
           httpOnly: true,
         })
         .status(200)
-        .json({ success: true, data: savedUser._doc });
+        .json(savedUser._doc);
     }
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });

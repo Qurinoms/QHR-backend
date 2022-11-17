@@ -60,6 +60,14 @@ const employeeSchema = new mongoose.Schema(
       type: Date,
       default: new Date(),
     },
+    deficit: {
+      type: String,
+      default: "00:00",
+    },
+    projects: {
+      type: Array,
+      default: [],
+    },
   },
   {
     timestamps: true,
