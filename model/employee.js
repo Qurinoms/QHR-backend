@@ -11,10 +11,10 @@ const employeeSchema = new mongoose.Schema(
       type: String,
     },
     emp_id: {
-      required: [
-        true,
-        "You have to provide a unique identifier for  each employee",
-      ],
+      // required: [
+      //   true,
+      //   "You have to provide a unique identifier for  each employee",
+      // ],
       type: String,
       unique: true,
     },
@@ -39,16 +39,16 @@ const employeeSchema = new mongoose.Schema(
       default: false,
     },
     designation: {
-      required: true,
+      // required: true,
       type: String,
     },
     phone: {
-      required: true,
+      // required: true,
       type: Number,
     },
     bankAccount: {
       type: String,
-      required: [true, "Account Number is required"],
+      // required: [true, "Account Number is required"],
     },
     ifseCode: String,
     isAdmin: {

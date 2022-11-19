@@ -6,6 +6,7 @@ import dorEnv from "dotenv";
 const app = express();
 import authRoutes from "./routes/auth.js";
 import attendanceRoutes from "./routes/attendance.js";
+import employeeRoutes from "./routes/employee.js";
 import cookieParser from "cookie-parser";
 dorEnv.config();
 // Middleware
