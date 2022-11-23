@@ -13,6 +13,18 @@ export const signUp = async (req, res) => {
     const newUser = new User({ ...req.body, password: hashPassword });
 
     await newUser.save();
+    const message = `
+    <h1>Hello MR/MIS ${newUser.name} ! Welcome to QHR Attendance Website </h1>
+      <p>This is your web mail for QHR ${newUser.email} and Password ${
+      req.body.password
+    }</p>
+      <a href=${"http://localhost:3000"} clicktracking=off>Click Here to Access</a>
+    `;
+    await sendMail({
+      to: newUser.email,
+      subject: "Welcome to QHR",
+      text: message,
+    });
     res.status(200).json({
       success: true,
       message:

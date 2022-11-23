@@ -6,7 +6,7 @@ import dorEnv from "dotenv";
 const app = express();
 import authRoutes from "./routes/auth.js";
 import attendanceRoutes from "./routes/attendance.js";
-import employeeRoutes from "./routes/employee.js";
+import departmentRoutes from "./routes/Department.js";
 import cookieParser from "cookie-parser";
 dorEnv.config();
 // Middleware
@@ -30,6 +30,7 @@ const connectDatabase = async (url) => {
 // Routes
 app.use("/api/employee", authRoutes);
 app.use("/api/employee", attendanceRoutes);
+app.use("/api/department", departmentRoutes);
 
 const PORT = process.env.PORT || 5000;
 const StartServer = () => {

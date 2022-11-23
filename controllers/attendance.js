@@ -18,7 +18,7 @@ export const attendance = async (req, res) => {
 };
 
 export const selfAttendance = async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   try {
     const userId = req.body.userId;
     const data = await Attendance.find({
@@ -30,7 +30,13 @@ export const selfAttendance = async (req, res) => {
   }
 };
 
-export const teamAttendance = async (req, res) => {
+export const getAttendanceByDate = async (req, res) => {
   try {
-  } catch (error) {}
+    const data = await Attendance.find({
+      date: { $gte: req.body.date },
+    });
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
 };

@@ -6,9 +6,9 @@ const attendanceSchema = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       required: true,
     },
-    date: String,
-    inTime: String,
-    outTime: String,
+    date: Date,
+    inTime: Date,
+    outTime: Date,
     duration: String,
   },
   {
