@@ -1,8 +1,17 @@
 import express from "express";
-import { getEmployeeData } from "../controllers/employee.js";
+import {
+  deleteUser,
+  getAllUsers,
+  getSingleUser,
+  updateUser,
+} from "../controllers/employee.js";
 
 const routes = express.Router();
 
-routes.get("/employee", getEmployeeData);
+routes.get("/:id", getSingleUser);
+routes.get("/", getAllUsers);
+
+routes.put("/:id", updateUser);
+routes.delete("/:id", deleteUser);
 
 export default routes;
