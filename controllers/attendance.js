@@ -25,7 +25,7 @@ export const selfAttendance = async (req, res) => {
     const userId = req.body.userId;
     const data = await Attendance.find({
       user: userId,
-    });
+    }).sort({ updatedAt: "desc" });
     res.status(200).json(data);
   } catch (error) {
     res.status(400).json(error.message);

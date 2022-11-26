@@ -56,7 +56,9 @@ export const getLeveByStatus = async (req, res) => {
 
 export const getAllLeave = async (req, res) => {
   try {
-    const data = await Leave.find({ user: req.params.userId });
+    const data = await Leave.find({ user: req.params.userId }).sort({
+      updatedAt: "desc",
+    });
     res.status(200).json(data);
   } catch (error) {
     res.status(400).json(error.message);
