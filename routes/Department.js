@@ -10,7 +10,7 @@ const routes = express.Router();
 
 routes.post("/", createDepartments);
 routes.get("/", getAllDepartments);
-routes.put("/update", updateDepartment);
-routes.delete("/delete", deleteDepartment);
+routes.put("/:id", updateDepartment);
+routes.delete("/:id", deleteDepartment);
 
 export default routes;

@@ -17,7 +17,7 @@ export const createDepartments = async (req, res) => {
 export const updateDepartment = async (req, res) => {
   try {
     const updateData = await Department.findByIdAndUpdate(
-      req.body.id,
+      req.params.id,
       { ...req.body },
       { new: true }
     );
@@ -33,7 +33,7 @@ export const updateDepartment = async (req, res) => {
 
 export const deleteDepartment = async (req, res) => {
   try {
-    await Department.findOneAndDelete(req.body.id);
+    await Department.findOneAndDelete(req.params.id);
     res
       .status(200)
       .json({ status: "success", message: "Department deleted successfully" });

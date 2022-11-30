@@ -7,6 +7,7 @@ const app = express();
 import authRoutes from "./routes/auth.js";
 import attendanceRoutes from "./routes/attendance.js";
 import employeeRoutes from "./routes/employee.js";
+import departmentRoutes from "./routes/Department.js";
 import cookieParser from "cookie-parser";
 import leaveRoutes from "./routes/leave.js";
 dorEnv.config();
@@ -31,7 +32,7 @@ const connectDatabase = async (url) => {
 // Routes
 app.use("/api/employee", authRoutes);
 app.use("/api/employee", attendanceRoutes);
-app.use("/api/employee", attendanceRoutes);
+app.use("/api/department", departmentRoutes);
 app.use("/api/employee", employeeRoutes);
 app.use("/api/leave", leaveRoutes);
 const PORT = process.env.PORT || 5000;

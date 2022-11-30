@@ -5,10 +5,10 @@ const departmentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  department_code: { type: String, required: true },
+  department_code: { type: String, required: true, unique: true },
   numberOfEmployees: {
     type: Number,
-    default: false,
+    default: 0,
   },
 });
 

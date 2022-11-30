@@ -16,7 +16,6 @@ const employeeSchema = new mongoose.Schema(
       //   "You have to provide a unique identifier for  each employee",
       // ],
       type: String,
-      unique: true,
     },
     email: {
       type: String,
@@ -42,9 +41,9 @@ const employeeSchema = new mongoose.Schema(
       // required: true,
       type: String,
     },
-    phone: {
+    phoneNumber: {
       // required: true,
-      type: Number,
+      type: String,
     },
     bankAccount: {
       type: String,
@@ -55,7 +54,7 @@ const employeeSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    dept_name: String,
+    dept_code: String,
     joined: {
       type: Date,
       default: new Date(),
@@ -67,6 +66,17 @@ const employeeSchema = new mongoose.Schema(
     projects: {
       type: Array,
       default: [],
+    },
+    pincode: String,
+    age: Number,
+    address: String,
+    country: String,
+    emreengcy_contact: String,
+    gender: String,
+    status: String,
+    isVisited: {
+      type: Boolean,
+      default: false,
     },
   },
   {
