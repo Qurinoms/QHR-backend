@@ -71,7 +71,7 @@ const employeeSchema = new mongoose.Schema(
     age: Number,
     address: String,
     country: String,
-    emreengcy_contact: String,
+    emergencyNumber: String,
     gender: String,
     status: String,
     isVisited: {

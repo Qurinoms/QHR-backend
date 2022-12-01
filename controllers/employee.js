@@ -31,9 +31,13 @@ export const updateUser = async (req, res) => {
     }
   }
   try {
-    const user = await Employee.findByIdAndUpdate(req.params.id, {
-      $set: req.body,
-    });
+    const user = await Employee.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: req.body,
+      },
+      { new: true }
+    );
     res.status(200).json({ message: "Data updated", data: user });
   } catch (error) {
     res.status(500).json(error);
