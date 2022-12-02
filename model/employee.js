@@ -45,7 +45,7 @@ const employeeSchema = new mongoose.Schema(
       // required: true,
       type: String,
     },
-    bankAccount: {
+    accountNumber: {
       type: String,
       // required: [true, "Account Number is required"],
     },
@@ -71,6 +71,7 @@ const employeeSchema = new mongoose.Schema(
     age: Number,
     address: String,
     country: String,
+    ifscCode: String,
     emergencyNumber: String,
     gender: String,
     status: String,
