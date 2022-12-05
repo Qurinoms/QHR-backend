@@ -35,7 +35,7 @@ app.use("/api/employee", attendanceRoutes);
 app.use("/api/department", departmentRoutes);
 app.use("/api/employee", employeeRoutes);
 app.use("/api/leave", leaveRoutes);
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 const StartServer = () => {
   connectDatabase(process.env.MONGO_URI);
   app.listen(PORT, () => console.log(`Server listening on ${PORT}`));
