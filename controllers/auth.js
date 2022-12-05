@@ -65,7 +65,7 @@ export const signIn = async (req, res) => {
         httpOnly: true,
       })
       .status(200)
-      .json(others);
+      .json({ user: others, access_token: token });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }

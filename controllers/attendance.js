@@ -2,6 +2,7 @@ import Attendance from "../model/attendance.js";
 import Employee from "../model/employee.js";
 import moment from "moment";
 const today = moment().startOf("day");
+
 export const attendance = async (req, res) => {
   try {
     const { inTime, outTime, date, userId } = req.body;
@@ -20,7 +21,6 @@ export const attendance = async (req, res) => {
 };
 
 export const selfAttendance = async (req, res) => {
-  // console.log(req.body);
   try {
     const userId = req.body.userId;
     const data = await Attendance.find({

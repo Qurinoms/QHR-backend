@@ -54,7 +54,7 @@ const employeeSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    dept_code: String,
+    department: String,
     joined: {
       type: Date,
       default: new Date(),
@@ -73,7 +73,10 @@ const employeeSchema = new mongoose.Schema(
     country: String,
     emergencyNumber: String,
     gender: String,
-    status: String,
+    status: {
+      type: String,
+      default: "working",
+    },
     isVisited: {
       type: Boolean,
       default: false,
