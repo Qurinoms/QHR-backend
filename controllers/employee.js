@@ -44,7 +44,14 @@ export const updateUser = async (req, res) => {
   }
 };
 export const deleteUser = async (req, res) => {
+  console.log(req.params.id);
+  console.log(req.body);
   try {
+    if (req.params.id === req.body.id) {
+      return res
+        .status(401)
+        .json({ success: false, message: "You can't delete your accout" });
+    }
     await Employee.findByIdAndDelete(req.params.id);
 
     res

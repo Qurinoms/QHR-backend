@@ -2,6 +2,7 @@ import express from "express";
 import {
   attendance,
   getAllTodayAttendance,
+  getAttendanceByTwoDate,
   selfAttendance,
 } from "../controllers/attendance.js";
 import { verifyToken } from "../middleware/verifyToken.js";
@@ -12,4 +13,5 @@ routes.post("/takeAttendance", attendance);
 routes.post("/selfAttendance", selfAttendance);
 // routes.post("/selfAttendance", verifyToken, selfAttendance);
 routes.get("/getPerDayAttendance", getAllTodayAttendance);
+routes.post("/getByDate", getAttendanceByTwoDate);
 export default routes;

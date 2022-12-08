@@ -1,7 +1,6 @@
 import Attendance from "../model/attendance.js";
 import Employee from "../model/employee.js";
 import moment from "moment";
-const today = moment().startOf("day");
 
 export const attendance = async (req, res) => {
   try {
@@ -33,13 +32,33 @@ export const selfAttendance = async (req, res) => {
 };
 
 export const getAllTodayAttendance = async (req, res) => {
+  const today = moment().startOf("day");
   try {
     // console.log(today);
-
+    // console.log(moment(today).endOf("day"));
     const data = await Attendance.find({
       date: {
-        $gte: today.toDate(),
-        $lte: moment(today).endOf("day").toDate(),
+        $gte: today,
+        $lte: moment(today).endOf("day"),
+      },
+    });
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+export const getAttendanceByTwoDate = async (req, res) => {
+  try {
+    const { startDate, endDate } = req.body;
+    const start = moment(startDate).startOf("day");
+    const end = moment(endDate).endOf("day");
+    console.log(start);
+    console.log(end);
+    const data = await Attendance.find({
+      date: {
+        $gte: start,
+        $lte: end,
       },
     });
     res.status(200).json(data);
