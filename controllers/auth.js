@@ -18,7 +18,7 @@ export const signUp = async (req, res) => {
       <p>This is your web mail for QHR ${newUser.email} and Password ${
       req.body.password
     }</p>
-      <a href=${"http://localhost:3000"} clicktracking=off>Click Here to Access</a>
+      <a href=${"https://qhr.qurinomsolutions.com/login"} clicktracking=off>Click Here to Access</a>
     `;
     await sendMail({
       to: newUser.email,
@@ -85,7 +85,7 @@ export const forgetPassword = async (req, res) => {
 
     await user.save();
 
-    const resetUrl = `http://localhost:3000/passwordreset/${resetToken}`;
+    const resetUrl = `https://qhr.qurinomsolutions.com/passwordreset/${resetToken}`;
 
     // HTML Meassage
 
