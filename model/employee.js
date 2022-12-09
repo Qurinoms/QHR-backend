@@ -49,7 +49,7 @@ const employeeSchema = new mongoose.Schema(
       type: String,
       // required: [true, "Account Number is required"],
     },
-    ifseCode: String,
+    ifscCode: String,
     isAdmin: {
       type: Boolean,
       default: false,
@@ -81,6 +81,15 @@ const employeeSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    dob: {
+      type: Date,
+    },
+    personalEmail: {
+      type: String,
+    },
+    upi: String,
+    branchName: String,
+    bankName: String,
   },
   {
     timestamps: true,
