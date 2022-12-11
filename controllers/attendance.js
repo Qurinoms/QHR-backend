@@ -66,3 +66,22 @@ export const getAttendanceByTwoDate = async (req, res) => {
     res.status(400).json(error.message);
   }
 };
+export const getEmployeeAttendancesByMonths = async (req, res) => {
+  try {
+    const { startDate, endDate } = req.body;
+    const start = moment(startDate).startOf("day");
+    const end = moment(endDate).endOf("day");
+    // console.log(start);
+    // console.log(end);
+    const data = await Attendance.find({
+      date: {
+        $gte: start,
+        $lte: end,
+      },
+      user: req.body.userId,
+    });
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
