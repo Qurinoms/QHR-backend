@@ -53,3 +53,14 @@ export const deleteCandidate = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+export const searchCndidate = async (req, res) => {
+  try {
+    const candidate = await Candidate.find({
+      $or: [{ name: { $regex: req.query?.q?.trim() } }],
+    });
+    res.status(200).json(candidate);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};

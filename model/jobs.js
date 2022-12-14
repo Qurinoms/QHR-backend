@@ -15,6 +15,11 @@ const jobSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
+    status: {
+      type: String,
+      enum: ["published", "closed"],
+      default: "published",
+    },
   },
   {
     timestamps: true,
