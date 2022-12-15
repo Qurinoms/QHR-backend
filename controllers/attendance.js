@@ -2,15 +2,15 @@ import Attendance from "../model/attendance.js";
 import Employee from "../model/employee.js";
 import moment from "moment";
 
-export const attendance = async (req, res) => {
+export const clockIn = async (req, res) => {
   try {
-    const { inTime, outTime, date, userId } = req.body;
+    const { inTime, date, userId } = req.body;
     console.log(req.body);
 
     const data = await Attendance.create({
       user: userId,
       inTime,
-      outTime,
+
       date,
     });
     res.status(200).json(data);
@@ -81,6 +81,29 @@ export const getEmployeeAttendancesByMonths = async (req, res) => {
       user: req.body.userId,
     });
     res.status(200).json(data);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+export const clockOut = async (req, res) => {
+  console.log(req.body);
+  try {
+    const attendance = await Attendance.findOneAndUpdate(
+      { inTime: req.body.inTime, user: req.body.user },
+      { outTime: req.body.outTime },
+      { new: true }
+    );
+    res.status(200).json(attendance);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+export const deleteAttendance = async (req, res) => {
+  try {
+    await Attendance.findByIdAndDelete(req.params.id);
+    res.status(200).json("deleted");
   } catch (error) {
     res.status(400).json(error.message);
   }
