@@ -14,8 +14,7 @@ export const postJobs = async (req, res) => {
   }
 };
 export const editJobs = async (req, res) => {
-  console.log(req.params.id);
-  console.log(req.body);
+  // console.log(req.params.id);
   try {
     const editedJob = await Job.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
