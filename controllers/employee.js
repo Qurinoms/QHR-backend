@@ -1,5 +1,6 @@
 import Employee from "../model/employee.js";
 import bcrypt from "bcryptjs";
+import Attendance from "../model/attendance.js";
 export const getAllUsers = async (req, res) => {
   try {
     const users = await Employee.find();
@@ -13,7 +14,10 @@ export const getSingleUser = async (req, res) => {
   try {
     const user = await Employee.findById(req.params.id);
 
-    const { password, updatedAt, ...other } = user?._doc;
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const { password, ...other } = user?._doc;
 
     res.status(200).json(other);
   } catch (error) {
@@ -44,8 +48,8 @@ export const updateUser = async (req, res) => {
   }
 };
 export const deleteUser = async (req, res) => {
-  console.log(req.params.id);
-  console.log(req.body);
+  // console.log(req.params.id);
+  // console.log(req.body);
   try {
     if (req.params.id === req.body.id) {
       return res
@@ -53,11 +57,21 @@ export const deleteUser = async (req, res) => {
         .json({ success: false, message: "You can't delete your accout" });
     }
     await Employee.findByIdAndDelete(req.params.id);
-
+    await Attendance.deleteMany({ user: req.params.id });
     res
       .status(200)
       .json({ message: "User deleted successfully.", success: true });
   } catch (error) {
     res.status(404).send({ sccess: false, message: error.message });
   }
+};
+
+export const searchEmplloyee = async (req, res) => {
+  const employee = await Employee.find({
+    $or: [
+      { name: { $regex: req.query?.q?.trim() } },
+      { department: { $regex: req.query?.q?.toUpperCase()?.trim() } },
+    ],
+  }).sort({ updatedAt: "asc" });
+  res.status(200).json(employee);
 };

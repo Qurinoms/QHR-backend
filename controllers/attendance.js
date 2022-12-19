@@ -22,6 +22,10 @@ export const clockIn = async (req, res) => {
 export const selfAttendance = async (req, res) => {
   try {
     const userId = req.body.userId;
+    const user = await Employee.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
     const data = await Attendance.find({
       user: userId,
     }).sort({ updatedAt: "desc" });
@@ -104,6 +108,15 @@ export const deleteAttendance = async (req, res) => {
   try {
     await Attendance.findByIdAndDelete(req.params.id);
     res.status(200).json("deleted");
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+export const deleteMany = async (req, res) => {
+  try {
+    await Attendance.deleteMany({ user: req.params.id });
+    res.status(200).json({ message: "Deleted" });
   } catch (error) {
     res.status(400).json(error.message);
   }

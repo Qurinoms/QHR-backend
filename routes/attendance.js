@@ -3,6 +3,7 @@ import {
   clockIn,
   clockOut,
   deleteAttendance,
+  deleteMany,
   getAllTodayAttendance,
   getAttendanceByTwoDate,
   getEmployeeAttendancesByMonths,
@@ -20,4 +21,5 @@ routes.get("/getPerDayAttendance", getAllTodayAttendance);
 routes.post("/getByDate", getAttendanceByTwoDate);
 routes.post("/getEmpAttnd", getEmployeeAttendancesByMonths);
 routes.delete("/attendance/:id", deleteAttendance);
+routes.delete("/attendance/user/:id", deleteMany);
 export default routes;

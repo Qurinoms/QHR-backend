@@ -14,8 +14,10 @@ export const postJobs = async (req, res) => {
   }
 };
 export const editJobs = async (req, res) => {
+  console.log(req.params.id);
+  console.log(req.body);
   try {
-    const editedJob = await Job.findOneAndUpdate(req.params.id, req.body, {
+    const editedJob = await Job.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
     res.status(200).json(editedJob);
@@ -25,7 +27,7 @@ export const editJobs = async (req, res) => {
 };
 export const deleteJobs = async (req, res) => {
   try {
-    await Job.findOneAndDelete(req.params.id);
+    await Job.findByIdAndDelete(req.params.id);
     res.status(200).json({ message: "Job deleted successfully" });
   } catch (error) {
     res.status(400).json({ message: error.message });
