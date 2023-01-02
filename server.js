@@ -10,6 +10,7 @@ import employeeRoutes from "./routes/employee.js";
 import departmentRoutes from "./routes/Department.js";
 import candidateRoutes from "./routes/candidateRoutes.js";
 import jobRoutes from "./routes/Job.js";
+import newsRoutes from "./routes/news.js";
 import cookieParser from "cookie-parser";
 import leaveRoutes from "./routes/leave.js";
 dorEnv.config();
@@ -39,6 +40,7 @@ app.use("/api/employee", employeeRoutes);
 app.use("/api/leave", leaveRoutes);
 app.use("/api/candidate", candidateRoutes);
 app.use("/api/job", jobRoutes);
+app.use("/api/news", newsRoutes);
 const PORT = process.env.PORT || 5001;
 const StartServer = () => {
   connectDatabase(process.env.MONGO_URI);
