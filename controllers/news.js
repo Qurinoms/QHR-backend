@@ -3,6 +3,10 @@ import News from "../model/news.js";
 
 export const createNews = async (req, res) => {
   try {
+    const user = await Employee.findById(req.body.postBy);
+    if (!user) {
+      res.status(404).json({ message: "User not exist please login" });
+    }
     const news = new News({ ...req.body, postBy: req.body.postBy });
     await news.save();
     res.status(201).json(news);
