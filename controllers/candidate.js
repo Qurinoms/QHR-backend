@@ -64,3 +64,14 @@ export const searchCndidate = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+export const getCandidatesByDepartment = async (req, res) => {
+  try {
+    const candidates = await Candidate.find({
+      job: { $regex: req.query?.q?.trim() },
+    });
+    res.status(200).json(candidates);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};

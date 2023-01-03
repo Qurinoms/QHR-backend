@@ -25,6 +25,7 @@ app.use(cookieParser());
 
 const connectDatabase = async (url) => {
   try {
+    mongoose.set("strictQuery", true);
     await mongoose.connect(url);
     console.log("DataBase connected");
   } catch (error) {
